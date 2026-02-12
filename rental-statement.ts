@@ -89,7 +89,9 @@ function calculateRentalCharge(movie: Movie, days: number): RentalCharge {
   }
   const calculator = chargeCalculators[movie.code];
   if (!calculator) {
-    throw new Error(`Unknown movie code: "${movie.code}"`);
+    console.log(`Unknown movie code: "${movie.code}"`);
+    return { amount: 0, points: POINTS_PER_RENTAL };
+    // throw new Error(`Unknown movie code: "${movie.code}"`);
   }
 
   return calculator(days);
